@@ -4,36 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Feliz Cumpleaños Nin Nin</title>
+
+  <!-- TODO: reemplaza #### por la URL correcta de tu canal si es necesario -->
   <style>
-    /* —— Reset y Body —— */
-    * { margin:0; padding:0; box-sizing:border-box; }
+    /* —— Reset & Body —— */
+    * { margin:0; padding:0; box-sizing:border-box }
     body {
-      background: #f0f0f0;
-      display: flex; align-items: center; justify-content: center;
-      min-height: 100vh; overflow: hidden;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      position: relative;
+      background:#f0f0f0;
+      display:flex; align-items:center; justify-content:center;
+      min-height:100vh; overflow:hidden; position:relative;
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
-    /* —— Tarjeta Postal —— */
+    /* —— Tarjeta —— */
     .card {
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      width: 360px; max-width:90%;
-      padding: 20px; z-index:1; position: relative;
+      background:#fff;
+      border-radius:20px;
+      box-shadow:0 4px 15px rgba(0,0,0,0.2);
+      width:360px; max-width:90%;
+      padding:20px;
+      position:relative; z-index:1;
     }
-    .card h1 {
-      font-size:24px; color:#e75480; text-align:center; margin-bottom:10px;
-    }
-    #counter {
-      font-size:14px; color:#e75480; text-align:center; margin-bottom:15px;
-    }
-    .card p {
-      font-size:14px; line-height:1.5; color:#333; text-align:left;
-    }
+    .card h1 { font-size:24px; color:#e75480; text-align:center; margin-bottom:10px }
+    #counter { font-size:14px; color:#e75480; text-align:center; margin-bottom:15px }
+    .card p { font-size:14px; line-height:1.5; color:#333 }
 
-    /* —— Lluvia de corazones —— */
+    /* —— Corazones —— */
     .heart {
       position:absolute;
       background:#FFC0CB;
@@ -47,11 +43,11 @@
       opacity:0.8; z-index:2;
     }
     @keyframes fall {
-      0%   { transform:translateY(0) scale(1) rotate(0deg); }
-      100% { transform:translateY(600px) scale(0.3) rotate(360deg); opacity:0; }
+      0%   { transform:translateY(0) scale(1) rotate(0deg) }
+      100%{ transform:translateY(600px) scale(0.3) rotate(360deg); opacity:0 }
     }
 
-    /* —— Flor animada —— */
+    /* —— Flor —— */
     .flowers {
       position:absolute;
       bottom:100px; left:50%;
@@ -62,7 +58,7 @@
       position:absolute; bottom:0; left:50%;
       transform-origin:bottom center;
     }
-    .flower--1 { animation:sway 4s ease-in-out infinite; }
+    .flower--1 { animation:sway 4s ease-in-out infinite }
 
     /* Tallo */
     .flower_line {
@@ -70,7 +66,7 @@
       background:#8b5a2b;
       animation:grow 1s ease-out 0.35s forwards;
     }
-    @keyframes grow { from{height:0;} to{height:100px;} }
+    @keyframes grow { from{height:0} to{height:100px} }
 
     /* Hojas */
     .flower_line_leaf--1,
@@ -79,60 +75,45 @@
       background:#6b4226; border-radius:50%;
       top:40px; transform-origin:center;
     }
-    .flower_line_leaf--1 {
-      left:-28px; animation:bloom-left 0.7s ease-out 1s forwards;
-    }
-    .flower_line_leaf--2 {
-      right:-28px; animation:bloom-right 0.7s ease-out 1.2s forwards;
-    }
-    @keyframes bloom-left {
-      from{transform:rotate(-90deg) scale(0);} to{transform:rotate(0) scale(1);}
-    }
-    @keyframes bloom-right {
-      from{transform:rotate(90deg) scale(0);} to{transform:rotate(0) scale(1);}
-    }
+    .flower_line_leaf--1 { left:-28px;  animation:bloom-left 0.7s ease-out 1s forwards }
+    .flower_line_leaf--2 { right:-28px; animation:bloom-right 0.7s ease-out 1.2s forwards }
+    @keyframes bloom-left { from{transform:rotate(-90deg) scale(0)} to{transform:rotate(0) scale(1)} }
+    @keyframes bloom-right{ from{transform:rotate(90deg)  scale(0)} to{transform:rotate(0) scale(1)} }
 
-    /* Capullos con 3 pétalos */
-    .bloom {
-      position:absolute; width:40px; height:40px; pointer-events:none;
-    }
+    /* Capullos (3 pétalos cada uno) */
+    .bloom { position:absolute; width:40px; height:40px; pointer-events:none }
     .petal {
       position:absolute; width:20px; height:30px;
       background:#d6a6ff; border-radius:50% 50% 0 0;
       transform-origin:bottom center; opacity:0;
       animation:petal-pop 0.5s ease-out forwards;
     }
-    @keyframes petal-pop {
-      from{transform:scale(0); opacity:0;} to{transform:scale(1); opacity:1;}
-    }
-    /* Animación escalonada de cada pétalo */
-    .bloom--1 .petal--1 { animation-delay:1.4s; }
-    .bloom--1 .petal--2 { transform:rotate(30deg);  animation-delay:1.6s; }
-    .bloom--1 .petal--3 { transform:rotate(-30deg); animation-delay:1.8s; }
+    @keyframes petal-pop { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
+    /* retrasos para efecto escalonado */
+    .bloom--1 .petal--1 { animation-delay:1.4s}
+    .bloom--1 .petal--2 { transform:rotate(30deg);  animation-delay:1.6s}
+    .bloom--1 .petal--3 { transform:rotate(-30deg); animation-delay:1.8s}
+    .bloom--2 .petal--1 { animation-delay:1s}
+    .bloom--2 .petal--2 { transform:rotate(30deg);  animation-delay:1.2s}
+    .bloom--2 .petal--3 { transform:rotate(-30deg); animation-delay:1.4s}
+    .bloom--3 .petal--1 { animation-delay:1.2s}
+    .bloom--3 .petal--2 { transform:rotate(30deg);  animation-delay:1.4s}
+    .bloom--3 .petal--3 { transform:rotate(-30deg); animation-delay:1.6s}
 
-    .bloom--2 .petal--1 { animation-delay:1s; }
-    .bloom--2 .petal--2 { transform:rotate(30deg);  animation-delay:1.2s; }
-    .bloom--2 .petal--3 { transform:rotate(-30deg); animation-delay:1.4s; }
+    /* ubicación sobre el tallo */
+    .bloom--1 { bottom:120px; left:50%; transform:translateX(-50%) }
+    .bloom--2 { bottom:110px; left:40%; transform:translateX(-50%) }
+    .bloom--3 { bottom:110px; left:60%; transform:translateX(-50%) }
 
-    .bloom--3 .petal--1 { animation-delay:1.2s; }
-    .bloom--3 .petal--2 { transform:rotate(30deg);  animation-delay:1.4s; }
-    .bloom--3 .petal--3 { transform:rotate(-30deg); animation-delay:1.6s; }
-
-    /* Posición de cada capullo */
-    .bloom--1 { bottom:120px; left:50%; transform:translateX(-50%); }
-    .bloom--2 { bottom:110px; left:40%; transform:translateX(-50%); }
-    .bloom--3 { bottom:110px; left:60%; transform:translateX(-50%); }
-
-    /* Balanceo del tallo/hojas */
     @keyframes sway {
-      0%,100% { transform:translateX(-50%) rotate(-5deg); }
-      50%     { transform:translateX(-50%) rotate(5deg);  }
+      0%,100% { transform:translateX(-50%) rotate(-5deg) }
+      50%     { transform:translateX(-50%) rotate(5deg)  }
     }
   </style>
 </head>
 <body onload="init()">
 
-  <!-- Flor completa -->
+  <!-- FLORES -->
   <div class="flowers">
     <div class="flower flower--1">
       <div class="flower_line"></div>
@@ -156,7 +137,7 @@
     </div>
   </div>
 
-  <!-- Tarjeta con mensaje y contador -->
+  <!-- TARJETA + CONTADOR -->
   <div class="card">
     <h1>¡Feliz cumpleaños, Nin Nin!</h1>
     <div id="counter">29 años, 0 minutos, 00 segundos</div>
@@ -168,44 +149,29 @@
     </p>
   </div>
 
-  <!-- YouTube audio oculto -->
+  <!-- YOUTUBE EN BACKGROUND -->
   <iframe id="player" allow="autoplay; encrypted-media" style="display:none;"></iframe>
-
   <script>
     const counterEl = document.getElementById('counter'),
           audioPlayer = document.getElementById('player'),
           colors = ['#FFC0CB','#FFD700','#FF69B4','#FF8C00','#ADFF2F','#DA70D6'];
-    let seconds = 0, minutes = 0;
-
-    function init() {
-      startCounter(); startHearts(); startAudio();
-    }
-    function updateCounter() {
-      seconds++; if (seconds===60){minutes++;seconds=0;}
-      counterEl.textContent = 
-        `29 años, ${minutes} minutos, ${String(seconds).padStart(2,'0')} segundos`;
-    }
-    function startCounter() {
-      updateCounter(); setInterval(updateCounter,1000);
-    }
-    function createHeart() {
-      const h=document.createElement('div');
-      h.className='heart';
-      const size=8+Math.random()*20;
-      h.style.width=size+'px'; h.style.height=size+'px';
-      h.style.background=colors[Math.floor(Math.random()*colors.length)];
-      h.style.left=Math.random()*100+'vw'; h.style.top='-20px';
-      const dur=3+Math.random()*2;
-      h.style.animationDuration=dur+'s';
-      document.body.appendChild(h);
-      setTimeout(()=>h.remove(),dur*1000);
-    }
-    function startHearts(){
-      setInterval(()=>{for(let i=0;i<10;i++)createHeart()},80);
-    }
-    function startAudio(){
-      audioPlayer.src=
-        'https://www.youtube.com/embed/D7MIYRx4e1g?autoplay=1&loop=1&playlist=D7MIYRx4e1g&controls=0&mute=0';
+    let seconds=0, minutes=0;
+    function init(){
+      setInterval(()=>{ seconds++; if(seconds===60){minutes++;seconds=0;}
+        counterEl.textContent=`29 años, ${minutes} minutos, ${String(seconds).padStart(2,'0')} segundos`;
+      },1000);
+      setInterval(()=>{ for(let i=0;i<10;i++){
+        const h=document.createElement('div'); h.className='heart';
+        const s=8+Math.random()*20;
+        Object.assign(h.style,{width:s+'px',height:s+'px',
+          background:colors[Math.floor(Math.random()*colors.length)],
+          left:Math.random()*100+'vw',top:'-20px',
+          animationDuration: (3+Math.random()*2)+'s'
+        });
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),(3+Math.random()*2)*1000);
+      }},80);
+      audioPlayer.src='https://www.youtube.com/embed/D7MIYRx4e1g?autoplay=1&loop=1&playlist=D7MIYRx4e1g&controls=0&mute=0';
     }
   </script>
 </body>
